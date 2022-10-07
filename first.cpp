@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int age {20};
+int age {10};
 
 int main(){
     int favNo;
