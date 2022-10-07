@@ -16,5 +16,13 @@ int main(){
     cout<<"Char Minimum: "<<CHAR_MIN<<endl;
     cout<<"Intiger Maximum: "<<INT_MAX<<endl;
 
+    cout<<"______________________________"<<endl;
+
+    int score{10};
+    int* score_ptr=&score;
+    cout<<"Value: "<<score<<endl;
+    cout<<"Pointer Value: "<<score_ptr<<endl;
+    cout<<*score_ptr;
+
     return 0;
 }
