@@ -1,52 +1,50 @@
 #include<iostream>
-#define SIZE 5
 
 using namespace std;
 
-int front=-1,rear=-1;
-int que[SIZE];
+struct Node{
+    int data;
+    struct Node * next;
+}*front=NULL,*rear=NULL;
 
-bool isFull(){
-    if(rear>=SIZE-1)
-        return true;
-    return false;
-}
+typedef struct Node node;
+
 bool isEmpty(){
-    if(front==-1 && rear==-1)
+    if(front==NULL && rear==NULL)
         return true;
     return false;
 }
-void display(){
-    if(isEmpty())
-        return;
-    for(int i=front;i<=rear;i++){
-        printf("Queue[%d]: %d\n",i,que[i]);
-    }
-}
+
 void enqueue(int value){
-    if(isFull()){
-        cout<<"Queue is Full!!!"<<endl;
-    }
-    else if(front==-1 && rear==-1){
-        front++;
-        rear++;
-        que[rear]=value;
+    node*nn=(node*)malloc(sizeof(node));
+    nn->data=value;
+    nn->next=NULL;
+    if(front==NULL&&rear==NULL){
+        front=rear=nn;
     }
     else{
-        rear++;
-        que[rear]=value;
+        rear->next=nn;
+        rear=nn;
     }
 }
 void dequeue(){
-    if(isEmpty())
-        cout<<"Queue is Empty!!!";
-    else if(front<=rear)
-        front++;
-    else
-        cout<<"Can't Perform Dequeue, As Front is Greater than Rear"<<endl;
+    if(front==NULL&&rear==NULL)
+        cout<<"Queue is Empty!!!"<<endl;
+    else{
+        node * temp;
+        temp=front;
+        front=front->next;
+        if(front==NULL)
+            rear=NULL;
+        free(temp);
+    }
 }
-
-
+void display(){
+    node * temp;
+    for(temp=front;temp!=NULL;temp=temp->next){
+        cout<<temp->data<<endl;
+    }
+}
 int main(){
     int op,val;
     while(true){

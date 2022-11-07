@@ -6,7 +6,7 @@ int front=-1,rear=-1;
 int que[SIZE];
 
 bool isEmpty(){
-    if((front==-1 && rear==-1))
+    if(front==-1 && rear==-1)
         return true;
     return false;
 }
@@ -16,13 +16,18 @@ bool isFull(){
     return false;
 }
 void display(){
-    int f=front;
-    int r=rear;
-    if(f<r){
-        while(f<=r){
-            printf("Queue[%d]: %d\n",f,que[f]);
-            f++;
-        }
+    if (rear >= front)
+    {
+        for (int i = front; i <= rear; i++)
+            printf("queue[%d]: %d \n",i,que[i]);
+    }
+    else
+    {
+        for (int i = front; i < SIZE; i++)
+            printf("queue[%d]: %d \n",i, que[i]);
+ 
+        for (int i = 0; i <= rear; i++)
+            printf("queue[%d]: %d \n",i, que[i]);
     }
     
 }
@@ -33,7 +38,7 @@ void enqueue(int value){
     }
     if(front==-1 && rear==-1)
         front=rear=0;
-    else if(rear==SIZE-1)
+    else if(rear==SIZE-1 && front!=0)
         rear=0;
     else
         rear++;
@@ -45,7 +50,7 @@ void dequeue(){
         cout<<"Queue is Empty!!"<<endl;
         return;
     }
-    if(front==rear)
+    else if(front==rear)
         front=rear=-1;
     else if(front=SIZE-1)
         front=0;
