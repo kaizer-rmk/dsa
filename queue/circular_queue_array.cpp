@@ -6,7 +6,7 @@ int front=-1,rear=-1;
 int que[SIZE];
 
 bool isEmpty(){
-    if(front==-1 && rear==-1)
+    if(front==-1)
         return true;
     return false;
 }
@@ -16,6 +16,8 @@ bool isFull(){
     return false;
 }
 void display(){
+    if(front==-1)
+        cout<<"Queue is Empty!!"<<endl;
     if (rear >= front)
     {
         for (int i = front; i <= rear; i++)
@@ -36,27 +38,27 @@ void enqueue(int value){
         cout<<"Queue is Full!!"<<endl;
         return;
     }
-    if(front==-1 && rear==-1)
+    if(front==-1)
         front=rear=0;
     else if(rear==SIZE-1 && front!=0)
         rear=0;
     else
         rear++;
     que[rear]=value;
-    display();
+    
 }
 void dequeue(){
-    if(isEmpty()){
-        cout<<"Queue is Empty!!"<<endl;
-        return;
+    if(front==-1){
+       cout<<"Queue is Empty!!"<<endl;
+       return;
     }
-    else if(front==rear)
-        front=rear=-1;
-    else if(front=SIZE-1)
+    if(front==rear){
+        front=-1;
+        rear=-1;
+    }
+    else if(front==SIZE-1)
         front=0;
-    else 
-        front++;
-    display();
+    else front++;
 }
 int main(){
     int op,val;
@@ -72,8 +74,10 @@ int main(){
             case 1: cout<<"Enter the value: ";
                     cin>>val;
                     enqueue(val);
+                    display();
                     break;
             case 2: dequeue();
+                    display();
                     break;
             default:cout<<"Wrong Choice!!"<<endl;
                     break;
