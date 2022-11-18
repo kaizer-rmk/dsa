@@ -43,8 +43,10 @@ void dequeue(){
 }
 void display(){
     node * temp=front;
-    if(front==NULL)
+    if(front==NULL){
         cout<<"Queue is Empty!!";
+        return;
+    }        
     while(temp->next!=front){
         cout<<temp->data<<endl;
         temp=temp->next;
