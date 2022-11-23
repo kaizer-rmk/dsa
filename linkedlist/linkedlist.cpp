@@ -25,11 +25,11 @@ void insert_b(int value){
     head=nn;
 }
 void insert_e(int value){
-    node * nn = (node*)malloc(sizeof(node));
     if(head==NULL){
         insert_b(value);
     }
     else{
+        node * nn = (node*)malloc(sizeof(node));
         node * temp;
         for(temp=head;temp->next!=NULL;temp=temp->next);
         temp->next=nn;
