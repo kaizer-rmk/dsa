@@ -97,7 +97,7 @@ int main()
     cout << "Enter number of passport:" << endl;
     cin >> n;
 
-    passport a[n], b[n];
+    passport a[n];
     cout << "Enter Passport Details:" << endl;
     for (i = 0; i < n; i++)
     {
@@ -106,19 +106,16 @@ int main()
         cout << "Date(dd mm yyyy): ";
         cin >> a[i].d.dd >> a[i].d.mm >> a[i].d.yyyy;
     }
-    
-    for (i = 0; i < n; i++)
-    {
-        b[i] = a[i];
-    }
 
+    //At first Sorted on the basis of Passport ID
     cout<<"\n"<<endl;
     cout << "sorting based on Passport id:" << endl;
     insertionSort(a, n);
     display(a, n);
     
+    //Later Passport Office Decided to short it by Renewal Date
     cout<<"\n"<<endl;
     cout<<"Sorting based on date of renewal:"<< endl;
-    selectionSort(b, n);
-    display(b, n);
+    selectionSort(a, n);
+    display(a, n);
 }
