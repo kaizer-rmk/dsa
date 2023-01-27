@@ -25,7 +25,6 @@ void countSort(int arr[],int n,int x){
 
     for(int i=0;i<n;i++){
         arr[i]=output[i];
-        cout<<arr[i]<<" ";
     }
     cout<<endl;
 }

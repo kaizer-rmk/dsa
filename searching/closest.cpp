@@ -27,6 +27,7 @@ int main(){
         cin>>arr[i];
     cout<<"Enter the value to find: ";
     cin>>val;
+    
     int res=find_closest(arr,val,n);
 
     cout<<endl<<"Nearest Value is: "<<arr[res];
